@@ -14,7 +14,7 @@ public abstract class SetCard {
 
     public Card peekSearchCard(int id){
         for (Card card:cards){
-            if (id == card.getId()){
+            if (card.isThisID(id)){
                 return card;
             }
         }
@@ -24,7 +24,7 @@ public abstract class SetCard {
 
     public Card takeSearchCard(int id){
         for (int i = 0; i < cards.size(); i++ ) {
-            if (id == cards.get(i).getId()){
+            if (cards.get(i).isThisID(id)){
                 return cards.remove(i);
             }
         }

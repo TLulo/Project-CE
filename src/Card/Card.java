@@ -6,4 +6,8 @@ public abstract class Card {
     public int getId(){
         return id;
     }
+
+    public boolean isThisID(int ID){
+        return id == ID;
+    }
 }
