@@ -44,7 +44,7 @@ public class Deck{
 
     public Card peekSearchCard(int id){
         for (Card card:cards){
-            if (id == card.id){
+            if (id == card.getId()){
                 return card;
             }
         }
@@ -54,7 +54,7 @@ public class Deck{
 
     public Card takeSearchCard(int id){
         for (int i = 0; i < cards.size(); i++ ) {
-            if (id == cards.get(i).id){
+            if (id == cards.get(i).getId()){
                 return cards.remove(i);
             }
         }
