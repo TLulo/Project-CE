@@ -1,3 +1,5 @@
+package SetCard;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.ArrayList;
@@ -5,14 +7,8 @@ import java.util.Collections;
 
 import Card.Card;
 
-public class Deck{
-    private List<Card> cards;
+public class Deck extends SetCard{
 
-    public int getAmount(){
-        return cards.size();
-    }
-
-    //Standar Game (Poker, Truco,...)
     public Card takeCard(){
         if (cards.isEmpty()){
             System.out.println("Warning (takeCard): Deck is empty");
@@ -40,26 +36,6 @@ public class Deck{
             hand.add(takeCard());
         }
         return hand;
-    }
-
-    public Card peekSearchCard(int id){
-        for (Card card:cards){
-            if (id == card.getId()){
-                return card;
-            }
-        }
-        System.out.println("Warning (PeekSearchCard): id not in Deck");
-        return null;
-    }
-
-    public Card takeSearchCard(int id){
-        for (int i = 0; i < cards.size(); i++ ) {
-            if (id == cards.get(i).getId()){
-                return cards.remove(i);
-            }
-        }
-        System.out.println("Warning (PeekSearchCard): id not in Deck");
-        return null;
     }
 
     public void addTop(Card newCard){
