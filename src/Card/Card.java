@@ -7,7 +7,7 @@ public abstract class Card {
         return id;
     }
 
-    public boolean isThisID(int ID){
-        return id == ID;
+    public boolean matchesId(int ID){
+        return getId() == ID;
     }
 }
