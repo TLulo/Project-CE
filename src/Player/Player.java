@@ -42,10 +42,6 @@ public class Player {
         return name;
     }
 
-    public int getPlayerId(){
-        return playerId;
-    }
-
     public void putCardinTable(int cardId){
         playerTable.add(hand.takeSearchCard(cardId));
     }
