@@ -18,6 +18,14 @@ public class Player {
         playerId = nextId ++;
     }
 
+    public int getId(){
+        return playerId;
+    }
+
+    public boolean matchesId(int ID){
+        return getId() == ID;
+    }
+
     public void setPlayerHand(Hand newHand){
         hand = newHand;
     }
