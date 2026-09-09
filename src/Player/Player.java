@@ -18,6 +18,14 @@ public class Player {
         playerId = nextId ++;
     }
 
+    public int getId(){
+        return playerId;
+    }
+
+    public boolean matchesId(int ID){
+        return getId() == ID;
+    }
+
     public void setPlayerHand(Hand newHand){
         hand = newHand;
     }
@@ -32,10 +40,6 @@ public class Player {
 
     public String getName(){
         return name;
-    }
-
-    public int getPlayerId(){
-        return playerId;
     }
 
     public void putCardinTable(int cardId){
