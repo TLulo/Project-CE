@@ -22,14 +22,14 @@ public abstract class Table {
                 return player;
             }
         }
-        System.out.println("Warning (getPlayer): id not in Players");
+        System.out.println("Warning (getOnePlayer): id not in Players");
         return null;
     }
 
     public Player deletePlayer(int idPlayer){
         for (int i = 0; i < players.size(); i++) {
             if (players.get(i).matchesId(idPlayer)){
-                return players.get(i);
+                return players.remove(i);
             }
         }
         System.out.println("Warning (DeletePlayer): id not in Players");
