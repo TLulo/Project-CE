@@ -22,7 +22,7 @@ public class Hand extends SetCard{
 
     public void setHand(List<Card> hand){
         if (hand.size() > handSize){
-            System.out.println("Warning (setHand): hand is to long");
+            System.out.println("Warning (setHand): hand is too long");
         }else{
             cards = hand;
         }

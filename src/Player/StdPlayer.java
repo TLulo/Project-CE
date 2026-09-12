@@ -10,10 +10,10 @@ public class StdPlayer extends Player {
     protected Hand hand;
     protected List<Card> playerTable;
 
-    public StdPlayer(){
+    public StdPlayer(int handSize){
         super();
         playerTable = new ArrayList<>();
-        hand = new Hand(new ArrayList<>());
+        hand = new Hand(handSize);
     }
 
     public void setPlayerHand(Hand newHand){
@@ -25,7 +25,10 @@ public class StdPlayer extends Player {
     }
 
     public void putCardinTable(int cardId){
-        playerTable.add(hand.takeSearchCard(cardId));
+         Card card = hand.takeSearchCard(cardId);
+         if (card != null) {
+             playerTable.add(card);
+         }
     }
 
     public Card removeToTable(int CardId){
@@ -34,7 +37,7 @@ public class StdPlayer extends Player {
                 return playerTable.remove(i);
             }
         }
-        System.out.println("Warning (TakeSearchCard): id not in PlayerTable");
+        System.out.println("Warning (removeToTable): id not in PlayerTable");
         return null;
     }
 }
