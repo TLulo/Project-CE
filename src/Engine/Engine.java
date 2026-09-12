@@ -14,7 +14,7 @@ public class Engine {
 
     public Player getCurrentPlayer(){
         if (!table.getPlayers().isEmpty()){
-            currentTurn = (currentTurn + 1) % table.getPlayers().size();
+            currentTurn = (currentTurn) % table.getPlayers().size();
             return table.getPlayers().get(currentTurn);
         }
         System.out.println("Warning (getCurrentPlayer): no players at Table");
