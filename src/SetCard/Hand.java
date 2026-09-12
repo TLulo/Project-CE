@@ -8,8 +8,7 @@ import Card.Card;
 public class Hand extends SetCard{
     private int handSize;
 
-    public Hand(List<Card> newHand, int handSize){
-        cards = newHand;
+    public Hand(int handSize){
         this.handSize = handSize;
     }
 
@@ -21,9 +20,20 @@ public class Hand extends SetCard{
         return handSize;
     }
 
-    public void add(Card newCard){
-        cards.addFirst(newCard);
+    public void setHand(List<Card> hand){
+        if (hand.size() > handSize){
+            System.out.println("Warning (setHand): hand is to long");
+        }else{
+            cards = hand;
+        }
     }
 
+    public void add(Card newCard){
+        if (cards.size() < handSize){
+            cards.addFirst(newCard);
+        }else{
+            System.out.println("Warning (add): hand is full");
+        }
+    }
 
 }
