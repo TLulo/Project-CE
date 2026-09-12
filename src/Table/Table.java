@@ -4,41 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Player.Player;
-import SetCard.Deck;
-import SetCard.Hand;
 
 public abstract class Table {
     protected  List<Player> players = new ArrayList<>();
-    protected Deck mainDeck;
 
     /*
      * SubClases should be implemented setGame
      * with necesary Decks and other stuffs 
      */
     public abstract void setGame(int handSize);
-
-
-    /**********************************
-     * 
-     * MainDeck Methods
-     */
-    public void setMainDeck(Deck newDeck){
-        mainDeck = newDeck;
-    }
-
-    public Deck getMainDeck(){
-        return mainDeck;
-    }
-
-    public void dealHands(int handSize){
-        for (Player player : players) {
-            player.setPlayerHand(new Hand(mainDeck.deal(handSize),handSize));
-        }
-    }
-
-    public void shuffleMainDeck(){
-        mainDeck.shuffle();
-    }
 
     /**************************************** */
     //Player Methods
