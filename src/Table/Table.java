@@ -7,7 +7,15 @@ import Player.Player;
 
 public abstract class Table {
     protected  List<Player> players = new ArrayList<>();
-    
+
+    /*
+     * SubClases should be implemented setGame
+     * with necesary Decks and other stuffs 
+     */
+    public abstract void setGame(int handSize);
+
+    /**************************************** */
+    //Player Methods
     public void addPlayer(Player newPlayer){
         players.add(newPlayer);
     }
