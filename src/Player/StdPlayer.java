@@ -24,6 +24,10 @@ public class StdPlayer extends Player {
         return hand;
     }
 
+    public List<Card> getPlayerTable(){
+        return playerTable;
+    }
+
     public void putCardinTable(int cardId){
          Card card = hand.takeSearchCard(cardId);
          if (card != null) {
