@@ -31,5 +31,9 @@ public abstract class SetCard {
         System.out.println("Warning (TakeSearchCard): id not in Set");
         return null;
     }
+
+    public boolean isEmpty(){
+        return cards.isEmpty();
+    }
     
 }
