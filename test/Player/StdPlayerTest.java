@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import Card.Card;
 import Card.StdCard;
@@ -22,15 +22,12 @@ public class StdPlayerTest {
 
 
         assertTrue(player.getPlayerHand().getMax() == handsize);
+        assertTrue(player.getPlayerHand().isEmpty());
         assertTrue(player.getId() >= 0);
         assertTrue(player.getPlayerTable().isEmpty());
 
-        assertNull(player);
-        assertNull(player.getPlayerTable());
         assertNull(player.getName());
-        assertNull(player.getPlayerHand());
     }
-
     @Test
     void TestmatchesId(){
         StdPlayer player = new StdPlayer(0);
@@ -40,7 +37,6 @@ public class StdPlayerTest {
         assertTrue(player.matchesId(id));
         assertFalse(player.matchesId(id+1));
     }
-
     @Test
     void TestIdIncrement(){
         StdPlayer player1 = new StdPlayer(0);
@@ -51,14 +47,12 @@ public class StdPlayerTest {
         assertEquals(id, player1.getId());
         assertEquals(id+1, player2.getId());
     }
-
     @Test 
     void TestSetAndGetName(){
         String name = "test";
         StdPlayer player = new StdPlayer(0);
         player.setName(name);
         assertEquals(name, player.getName());
-        assertNull(player.getName());
     }
     @Test 
     void TestSetAndGetPlayerHand(){
@@ -71,17 +65,15 @@ public class StdPlayerTest {
     @Test 
     void TestPutCardinTable(){
         int idCard = 1;
-        StdCard card = mock(StdCard.class);
-        when(card.getId()).thenReturn(idCard);
+        StdCard card = new StdCard(idCard, 0, "Test");
 
-        StdPlayer player = new StdPlayer(idCard);
+        StdPlayer player = new StdPlayer(1);
         player.getPlayerHand().add(card);
         player.putCardinTable(idCard);
 
         assertTrue(player.getPlayerHand().isEmpty());
         assertFalse(player.getPlayerTable().isEmpty());
         assertEquals(idCard, player.getPlayerTable().getFirst().getId());
-
     }
     @Test
     void TestPutCardinTableWithEmptyHand(){
@@ -90,18 +82,18 @@ public class StdPlayerTest {
         player.putCardinTable(1);
 
         assertTrue(player.getPlayerTable().isEmpty());
-        assertNull(player.getPlayerTable());
     }
     @Test
     void TestRemoveToTable(){
-        Card card1 = mock(Card.class);
-        when(card1.getId()).thenReturn(0);
-        Card card2 = mock(Card.class);
-        when(card2.getId()).thenReturn(1);
+        Card card1 = new StdCard(0, 0, "Test 1");
+        Card card2 = new StdCard(1, 0, "Test 2");
 
-        StdPlayer player = new StdPlayer(0);
+        StdPlayer player = new StdPlayer(2);
         player.getPlayerHand().add(card1);
         player.getPlayerHand().add(card2);
+
+        player.putCardinTable(0);
+        player.putCardinTable(1);
 
         Card newCard1 = player.removeToTable(0);
         Card newCard2 = player.removeToTable(1);
@@ -116,6 +108,6 @@ public class StdPlayerTest {
 
         Card nullCard = player.removeToTable(2);
 
-        assertEquals(null, nullCard);
+        assertNull(nullCard);
     }
 }
