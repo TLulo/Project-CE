@@ -86,19 +86,24 @@ public class StdPlayerTest {
     }
     @Test
     void TestRemoveToTable(){
-        Card card1 = new StdCard(0, 0, "Test 1");
-        Card card2 = new StdCard(1, 0, "Test 2");
+        Card card0 = new StdCard(0, 0, "Test 1");
+        Card card1 = new StdCard(1, 0, "Test 2");
+        Card card2 = new StdCard(2, 0, "Test 3");
 
-        StdPlayer player = new StdPlayer(2);
+        StdPlayer player = new StdPlayer(3);
+        player.getPlayerHand().add(card0);
         player.getPlayerHand().add(card1);
         player.getPlayerHand().add(card2);
 
         player.putCardinTable(0);
         player.putCardinTable(1);
+        player.putCardinTable(2);
 
-        Card newCard1 = player.removeToTable(0);
-        Card newCard2 = player.removeToTable(1);
+        Card newCard2 = player.removeToTable(2);
+        Card newCard1 = player.removeToTable(1);
+        Card newCard0 = player.removeToTable(0);
 
+        assertEquals(card0, newCard0);
         assertEquals(card1, newCard1);
         assertEquals(card2, newCard2);
 
