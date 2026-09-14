@@ -7,6 +7,7 @@ public abstract class Player {
 
     public Player(){
         playerId = nextId ++;
+        name = null;
     }
 
     public int getId(){
