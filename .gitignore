@@ -19,6 +19,10 @@
 *.tar.gz
 *.rar
 
+# Test Configs
+coverage/
+jacoco.exec
+
 # vscode configs
 .vscode/
 

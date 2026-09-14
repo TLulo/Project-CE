@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
@@ -23,7 +22,9 @@ public class StdPlayerTest {
 
         assertTrue(player.getPlayerHand().getMax() == handsize);
         assertTrue(player.getPlayerHand().isEmpty());
+
         assertTrue(player.getId() >= 0);
+
         assertTrue(player.getPlayerTable().isEmpty());
 
         assertNull(player.getName());
