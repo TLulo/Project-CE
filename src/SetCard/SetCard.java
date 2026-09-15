@@ -12,9 +12,7 @@ public abstract class SetCard {
         return cards.size();
     }
     public void setListCard(List<Card> cards){
-        for (Card card : cards) {
-            this.cards.add(card);
-        }
+        this.cards = new ArrayList<>(cards);
     }
     public List<Card> getAllCards(){
         return cards;
