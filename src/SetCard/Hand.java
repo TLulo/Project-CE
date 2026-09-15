@@ -28,7 +28,11 @@ public class Hand extends SetCard{
     public int getMax(){
         return handSize;
     }
-
+    
+    public void setHand(List<Card> hand){
+        setListCard(hand);
+    }
+    
     public @Override void setListCard(List<Card> hand){
         if (hand.size() > handSize) {
             System.out.println("Warning (setHand): hand is too long");
