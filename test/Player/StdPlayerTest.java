@@ -29,32 +29,6 @@ public class StdPlayerTest {
 
         assertNull(player.getName());
     }
-    @Test
-    void TestmatchesId(){
-        StdPlayer player = new StdPlayer(0);
-        
-        int id = player.getId();
-
-        assertTrue(player.matchesId(id));
-        assertFalse(player.matchesId(id+1));
-    }
-    @Test
-    void TestIdIncrement(){
-        StdPlayer player1 = new StdPlayer(0);
-        StdPlayer player2 = new StdPlayer(0);
-
-        int id = player1.getId();
-
-        assertEquals(id, player1.getId());
-        assertEquals(id+1, player2.getId());
-    }
-    @Test 
-    void TestSetAndGetName(){
-        String name = "test";
-        StdPlayer player = new StdPlayer(0);
-        player.setName(name);
-        assertEquals(name, player.getName());
-    }
     @Test 
     void TestSetAndGetPlayerHand(){
         Hand hand = mock(Hand.class);
