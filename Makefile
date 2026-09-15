@@ -26,24 +26,24 @@ opencov:
 
 #Clean
 clean:
-	rm -rf out/ jacoco.exec /coverage
+	rm -rf out/ jacoco.exec coverage/
 #Compila
 compile: clean
-	javac -cp "lib/*:out" -d out $(SOURCES)
+	javac -cp "lib/*:out" -d out/src $(SOURCES)
 
 #Compila los test
 test: compile
-	javac -cp "lib/*:out" -d out $(TEST_SOURCES)
-	java -cp "lib/*:out" org.junit.platform.console.ConsoleLauncher execute --scan-classpath
+	javac -cp "lib/*:out/src:out/test" -d out/test $(TEST_SOURCES)
+	java -cp "lib/*:out/src:out/test" org.junit.platform.console.ConsoleLauncher execute --scan-classpath
 
 #Compila los test y muestra el coverage
 coverage: compile
-	javac -cp "lib/*:out" -d out $(TEST_SOURCES)
+	javac -cp "lib/*:out/src:out/test" -d out/test $(TEST_SOURCES)
 	java -javaagent:$(JACOCO)/jacocoagent.jar=destfile=jacoco.exec \
-		-cp "lib/*:out" \
+		-cp "lib/*:out/src:out/test" \
 		org.junit.platform.console.ConsoleLauncher execute --scan-class-path
 	java -jar $(JACOCO)/jacococli.jar report $(EXEC) \
-		--classfiles out \
+		--classfiles out/src \
 		--sourcefiles src \
 		--html $(COVERAGE)
 	xdg-open $(COVERAGE)/index.html
