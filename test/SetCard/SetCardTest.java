@@ -1,7 +1,11 @@
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,14 +37,17 @@ public class SetCardTest {
     }
     @Test 
     void TestPeekSearchCard(){
-        Card card1 = new StdCard(1, 0, "Test");
+        Card card1 = new StdCard(1, 0, "test");
         Card card2 = new StdCard(2, 0, "test");
-        Card card3 = new StdCard(3, 0, "Test");
-        Deck deck = new Deck();
+        Card card3 = new StdCard(3, 0, "test");
 
-        deck.addTop(card1);
-        deck.addTop(card2);
-        deck.addTop(card3);
+        List<Card> listCards = new ArrayList<>();
+        listCards.add(card1);
+        listCards.add(card2);
+        listCards.add(card3);
+
+        Deck deck = new Deck();
+        deck.setListCard(listCards);
 
         Card searchCard = deck.peekSearchCard(2);
 
@@ -49,14 +56,17 @@ public class SetCardTest {
     }
     @Test 
     void TestPeekSearchCardNegative(){
-        Card card1 = new StdCard(1, 0, "Test");
+        Card card1 = new StdCard(1, 0, "test");
         Card card2 = new StdCard(2, 0, "test");
-        Card card3 = new StdCard(3, 0, "Test");
-        Deck deck = new Deck();
+        Card card3 = new StdCard(3, 0, "test");
 
-        deck.addTop(card1);
-        deck.addTop(card2);
-        deck.addTop(card3);
+        List<Card> listCards = new ArrayList<>();
+        listCards.add(card1);
+        listCards.add(card2);
+        listCards.add(card3);
+
+        Deck deck = new Deck();
+        deck.setListCard(listCards);
 
         Card searchCard = deck.peekSearchCard(-2);
 
@@ -64,14 +74,17 @@ public class SetCardTest {
     }
     @Test
     void TestPeekSearchCardNotFound(){
-        Card card1 = new StdCard(1, 0, "Test");
+        Card card1 = new StdCard(1, 0, "test");
         Card card2 = new StdCard(2, 0, "test");
-        Card card3 = new StdCard(3, 0, "Test");
-        Deck deck = new Deck();
+        Card card3 = new StdCard(3, 0, "test");
 
-        deck.addTop(card1);
-        deck.addTop(card2);
-        deck.addTop(card3);
+        List<Card> listCards = new ArrayList<>();
+        listCards.add(card1);
+        listCards.add(card2);
+        listCards.add(card3);
+
+        Deck deck = new Deck();
+        deck.setListCard(listCards);
 
         Card searchCard = deck.peekSearchCard(5);
 
@@ -87,15 +100,18 @@ public class SetCardTest {
         assertTrue(deck.isEmpty());
     }
     @Test
-    void takeSearchCard(){
-        Card card1 = new StdCard(1, 0, "Test");
+    void TesttakeSearchCard(){
+        Card card1 = new StdCard(1, 0, "test");
         Card card2 = new StdCard(2, 0, "test");
-        Card card3 = new StdCard(3, 0, "Test");
-        Deck deck = new Deck();
+        Card card3 = new StdCard(3, 0, "test");
 
-        deck.addTop(card1);
-        deck.addTop(card2);
-        deck.addTop(card3);
+        List<Card> listCards = new ArrayList<>();
+        listCards.add(card1);
+        listCards.add(card2);
+        listCards.add(card3);
+
+        Deck deck = new Deck();
+        deck.setListCard(listCards);
 
         int amount = deck.getAmount();
         Card searchCard = deck.takeSearchCard(2);
@@ -104,7 +120,7 @@ public class SetCardTest {
         assertTrue(deck.getAmount() == amount-1);
     }
     @Test 
-    void takeSearchCardRemoveLastCard(){
+    void TesttakeSearchCardRemoveLastCard(){
         Card card1 = new StdCard(1, 0, "Test");
         Deck deck = new Deck();
 
@@ -116,7 +132,7 @@ public class SetCardTest {
         assertTrue(deck.isEmpty());
     }
     @Test 
-    void takeSearchCardNotFound(){
+    void TesttakeSearchCardNotFound(){
         Card card1 = new StdCard(1, 0, "Test");
         Deck deck = new Deck();
 
@@ -126,5 +142,24 @@ public class SetCardTest {
 
         assertNull(searchCard);
         assertTrue(!deck.isEmpty());
+    }
+    @Test
+    void TestSetnGetList(){
+        Card card1 = new StdCard(1, 0, "test");
+        Card card2 = new StdCard(2, 0, "test");
+        Card card3 = new StdCard(3, 0, "test");
+
+        List<Card> listCards = new ArrayList<>();
+        listCards.add(card1);
+        listCards.add(card2);
+        listCards.add(card3);
+
+        Deck deck = new Deck();
+
+        assertTrue(deck.isEmpty());
+
+        deck.setListCard(listCards);
+        assertFalse(deck.isEmpty());
+        assertEquals(listCards, deck.getAllCards());
     }
 }
