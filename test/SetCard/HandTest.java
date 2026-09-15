@@ -60,7 +60,7 @@ public class HandTest {
 
         assertTrue(hand.getAllCards().isEmpty());
 
-        hand.setListCard(listCards);
+        hand.setHand(listCards);
         assertEquals(listCards, hand.getAllCards());
     }
     @Test 
@@ -78,7 +78,7 @@ public class HandTest {
 
         assertTrue(hand.getAllCards().isEmpty());
 
-        hand.setListCard(listCards);
+        hand.setHand(listCards);
         assertEquals(listCards, hand.getAllCards());
         assertEquals(999, hand.getMax());
     }
@@ -98,7 +98,7 @@ public class HandTest {
 
         assertTrue(hand.getAllCards().isEmpty());
 
-        hand.setListCard(listCards);
+        hand.setHand(listCards);
         assertEquals(listCards.subList(0, handSize), hand.getAllCards());
     }
     @Test 
