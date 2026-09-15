@@ -11,6 +11,12 @@ public abstract class SetCard {
     public int getAmount(){
         return cards.size();
     }
+    public void setListCard(List<Card> cards){
+        this.cards = cards;
+    }
+    public List<Card> getAllCards(){
+        return cards;
+    }
 
     public Card peekSearchCard(int id){
         for (Card card:cards){
