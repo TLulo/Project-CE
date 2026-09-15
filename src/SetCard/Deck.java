@@ -1,7 +1,6 @@
 package SetCard;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,7 +14,7 @@ public class Deck extends SetCard{
             return null;
         }
 
-        return cards.remove(cards.size()-1);
+        return cards.removeFirst();
     }
     
     public void shuffle(){
@@ -28,8 +27,8 @@ public class Deck extends SetCard{
             throw new IllegalArgumentException("handSize cannot be negative");
         }
         if(cards.size() < dealSize){
-            System.err.println("Not Enough Cards");
-            throw new NoSuchElementException("Deck no Enough Cards");
+            System.out.println("Warning (Deal): Deck no Enough Cards");
+            dealSize = cards.size();
         }
         List<Card> hand = new ArrayList<>(dealSize);
         for (int i = 0; i < dealSize; i++) {
