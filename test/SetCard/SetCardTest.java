@@ -1,5 +1,6 @@
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
@@ -161,5 +162,7 @@ public class SetCardTest {
         deck.setListCard(listCards);
         assertFalse(deck.isEmpty());
         assertEquals(listCards, deck.getAllCards());
+        deck.takeSearchCard(1);
+        assertNotEquals(listCards, deck.getAllCards());
     }
 }
