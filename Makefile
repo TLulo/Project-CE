@@ -9,6 +9,8 @@ JACOCO = /home/lalo/Descargas/jacoco-0.8.15/lib
 EXEC = jacoco.exec
 COVERAGE = ./coverage
 
+.PHONY: all clean
+
 # Detectar separador de classpath según el SO
 ifeq ($(OS),Windows_NT)
     SEP=;
@@ -22,8 +24,11 @@ all: compile
 opencov:
 	xdg-open $(COVERAGE)/index.html
 
+#Clean
+clean:
+	rm -rf out/ jacoco.exec /coverage
 #Compila
-compile:
+compile: clean
 	javac -cp "lib/*:out" -d out $(SOURCES)
 
 #Compila los test
