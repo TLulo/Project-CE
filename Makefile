@@ -33,12 +33,12 @@ compile: clean
 
 #Compila los test
 test: compile
-	javac -cp "lib/*:out" -d out $(TEST_SOURCES)
+	javac -cp "lib/*:out:test-out" -d test-out $(TEST_SOURCES)
 	java -cp "lib/*:out" org.junit.platform.console.ConsoleLauncher execute --scan-classpath
 
 #Compila los test y muestra el coverage
 coverage: compile
-	javac -cp "lib/*:out" -d out $(TEST_SOURCES)
+	javac -cp "lib/*:out:test-out" -d test-out $(TEST_SOURCES)
 	java -javaagent:$(JACOCO)/jacocoagent.jar=destfile=jacoco.exec \
 		-cp "lib/*:out" \
 		org.junit.platform.console.ConsoleLauncher execute --scan-class-path
