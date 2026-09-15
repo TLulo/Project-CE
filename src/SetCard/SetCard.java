@@ -18,18 +18,14 @@ public abstract class SetCard {
                 return card;
             }
         }
-        System.out.println("Warning (PeekSearchCard): id not in Set");
+        System.out.println("Warning: id not in Set");
         return null;
     }
 
     public Card takeSearchCard(int id){
-        for (int i = 0; i < cards.size(); i++ ) {
-            if (cards.get(i).matchesId(id)){
-                return cards.remove(i);
-            }
-        }
-        System.out.println("Warning (TakeSearchCard): id not in Set");
-        return null;
+        Card card = peekSearchCard(id);
+        cards.remove(card);
+        return card;
     }
 
     public boolean isEmpty(){
