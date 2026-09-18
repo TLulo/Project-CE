@@ -35,7 +35,6 @@ public class Engine <P extends Player, T extends Table<P>>{
     }
 
     public void setGame(int handSize){
-        table.setGame(handSize);
         currentTurn = 0;
     }
 }

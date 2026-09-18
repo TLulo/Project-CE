@@ -148,4 +148,25 @@ public class DeckTest {
         assertEquals(card3, deck.takeCard());
         assertTrue(deck.isEmpty());
     }
+
+    @Test
+    void TestAddRandom(){
+        Card card1 = new StdCard(1, 0, "test");
+        Card card2 = new StdCard(2, 0, "test");
+        Card card3 = new StdCard(3, 0, "test");
+
+        Deck<Card> deck = new Deck<Card>();
+
+        deck.addRandom(card1);
+        assertEquals(1, deck.getAmount());
+        assertEquals(card1, deck.peekSearchCard(1));
+
+        deck.addRandom(card2);
+        deck.addRandom(card3);
+
+        assertEquals(3, deck.getAmount());
+        assertEquals(card1, deck.peekSearchCard(1));
+        assertEquals(card2, deck.peekSearchCard(2));
+        assertEquals(card3, deck.peekSearchCard(3));
+    }
 }
