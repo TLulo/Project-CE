@@ -35,9 +35,9 @@ public class StdPlayer<C extends Card> extends Player{
          }
     }
 
-    public C removeToTable(int CardId){
+    public C removeToTable(int cardId){
         for (int i = 0; i < playerTable.size(); i++ ) {
-            if (playerTable.get(i).matchesId(CardId)){
+            if (playerTable.get(i).matchesId(cardId)){
                 return playerTable.remove(i);
             }
         }
