@@ -12,7 +12,6 @@ public abstract class Table<P extends Player> {
      * SubClases should be implemented setGame
      * with necesary Decks and other stuffs 
      */
-    public abstract void setGame(int handSize);
 
     /**************************************** */
     //Player Methods
