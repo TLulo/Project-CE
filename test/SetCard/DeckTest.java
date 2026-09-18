@@ -16,7 +16,7 @@ import SetCard.Deck;
 public class DeckTest {
     @Test 
     void TestConstructor(){
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         assertTrue(deck.isEmpty());
     }
@@ -31,7 +31,7 @@ public class DeckTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         assertEquals(card1, deck.takeCard());
@@ -48,7 +48,7 @@ public class DeckTest {
         listCards.add(card1);
         listCards.add(card2);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         deck.shuffle();
@@ -69,7 +69,7 @@ public class DeckTest {
         listCards.add(card1);
         listCards.add(card2);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
         deck.addBottom(card3);
 
@@ -85,7 +85,7 @@ public class DeckTest {
         listCards.add(card1);
         listCards.add(card2);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         assertThrowsExactly(IllegalArgumentException.class, ()->deck.deal(-2));
@@ -102,7 +102,7 @@ public class DeckTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         List<Card> deal = deck.deal(999);
@@ -117,7 +117,7 @@ public class DeckTest {
         Card card2 = new StdCard(2, 0, "test");
         Card card3 = new StdCard(3, 0, "test");
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         deck.addTop(card3);
         deck.addTop(card2);
@@ -135,7 +135,7 @@ public class DeckTest {
         Card card2 = new StdCard(2, 0, "test");
         Card card3 = new StdCard(3, 0, "test");
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         deck.addBottom(card1);
         deck.addBottom(card2);

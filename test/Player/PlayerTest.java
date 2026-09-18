@@ -9,18 +9,20 @@ import org.junit.jupiter.api.Test;
 
 import Player.Player;
 import Player.StdPlayer;
+import Card.StdCard;
+import Card.Card;
 
 public class PlayerTest {
     @Test 
     void TestConstructor(){
-        Player player = new StdPlayer(0);
+        Player player = new StdPlayer<Card>(0);
 
         assertTrue(player.getId() >= 0);
         assertNull(player.getName());
     }
     @Test
     void TestmatchesId(){
-        Player player = new StdPlayer(0);
+        Player player = new StdPlayer<Card>(0);
         
         int id = player.getId();
 
@@ -29,8 +31,8 @@ public class PlayerTest {
     }
     @Test
     void TestIdIncrement(){
-        Player player1 = new StdPlayer(0);
-        Player player2 = new StdPlayer(0);
+        Player player1 = new StdPlayer<Card>(0);
+        Player player2 = new StdPlayer<Card>(0);
 
         int id = player1.getId();
 
@@ -40,7 +42,7 @@ public class PlayerTest {
     @Test 
     void TestSetAndGetName(){
         String name = "test";
-        Player player = new StdPlayer(0);
+        Player player = new StdPlayer<Card>(0);
         player.setName(name);
         assertEquals(name, player.getName());
     }

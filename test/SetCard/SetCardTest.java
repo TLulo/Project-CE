@@ -17,7 +17,7 @@ import SetCard.Deck;
 public class SetCardTest {
     @Test 
     void TestConstructor(){
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         assertTrue(deck.isEmpty());
     }
@@ -26,7 +26,7 @@ public class SetCardTest {
         Card card1 = mock(Card.class);
         Card card2 = mock(Card.class);
         Card card3 = mock(Card.class);
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         assertTrue(deck.getAmount() == 0);
 
         deck.addTop(card1);
@@ -47,7 +47,7 @@ public class SetCardTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         Card searchCard = deck.peekSearchCard(2);
@@ -66,7 +66,7 @@ public class SetCardTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         Card searchCard = deck.peekSearchCard(-2);
@@ -84,7 +84,7 @@ public class SetCardTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         Card searchCard = deck.peekSearchCard(5);
@@ -93,7 +93,7 @@ public class SetCardTest {
     }
     @Test
     void TestPeekSearchCardEmpySet(){
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         Card searchCard = deck.peekSearchCard(0);
 
@@ -111,7 +111,7 @@ public class SetCardTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
         deck.setListCard(listCards);
 
         int amount = deck.getAmount();
@@ -123,7 +123,7 @@ public class SetCardTest {
     @Test 
     void TesttakeSearchCardRemoveLastCard(){
         Card card1 = new StdCard(1, 0, "Test");
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         deck.addTop(card1);
 
@@ -135,7 +135,7 @@ public class SetCardTest {
     @Test 
     void TesttakeSearchCardNotFound(){
         Card card1 = new StdCard(1, 0, "Test");
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         deck.addTop(card1);
 
@@ -155,7 +155,7 @@ public class SetCardTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Deck deck = new Deck();
+        Deck<Card> deck = new Deck<Card>();
 
         assertTrue(deck.isEmpty());
 

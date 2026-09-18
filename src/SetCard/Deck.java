@@ -6,9 +6,9 @@ import java.util.Collections;
 
 import Card.Card;
 
-public class Deck extends SetCard{
+public class Deck<C extends Card> extends SetCard<C>{
 
-    public Card takeCard(){
+    public C takeCard(){
         if (cards.isEmpty()){
             System.out.println("Warning (takeCard): Deck is empty");
             return null;
@@ -21,7 +21,7 @@ public class Deck extends SetCard{
         Collections.shuffle(cards);
     }
 
-    public List<Card> deal(int dealSize){
+    public List<C> deal(int dealSize){
         if(dealSize < 0){
             System.err.println("Invalid argument");
             throw new IllegalArgumentException("handSize cannot be negative");
@@ -30,18 +30,18 @@ public class Deck extends SetCard{
             System.out.println("Warning (Deal): Deck no Enough Cards");
             dealSize = cards.size();
         }
-        List<Card> hand = new ArrayList<>(dealSize);
+        List<C> hand = new ArrayList<>(dealSize);
         for (int i = 0; i < dealSize; i++) {
             hand.add(takeCard());
         }
         return hand;
     }
 
-    public void addTop(Card newCard){
+    public void addTop(C newCard){
         cards.addFirst(newCard);
     }
 
-    public void addBottom(Card newCard){
+    public void addBottom(C newCard){
         cards.addLast(newCard);
     }
 }
