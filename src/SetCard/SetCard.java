@@ -5,21 +5,21 @@ import Card.Card;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class SetCard {
-    protected List<Card> cards = new ArrayList<>();
+public abstract class SetCard <C extends Card>{
+    protected List<C> cards = new ArrayList<>();
 
     public int getAmount(){
         return cards.size();
     }
-    public void setListCard(List<Card> cards){
+    public void setListCard(List<C> cards){
         this.cards = new ArrayList<>(cards);
     }
-    public List<Card> getAllCards(){
+    public List<C> getAllCards(){
         return cards;
     }
 
-    public Card peekSearchCard(int id){
-        for (Card card:cards){
+    public C peekSearchCard(int id){
+        for (C card:cards){
             if (card.matchesId(id)){
                 return card;
             }
@@ -28,8 +28,8 @@ public abstract class SetCard {
         return null;
     }
 
-    public Card takeSearchCard(int id){
-        Card card = peekSearchCard(id);
+    public C takeSearchCard(int id){
+        C card = peekSearchCard(id);
         cards.remove(card);
         return card;
     }

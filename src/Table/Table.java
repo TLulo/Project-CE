@@ -5,8 +5,8 @@ import java.util.List;
 
 import Player.Player;
 
-public abstract class Table {
-    protected  List<Player> players = new ArrayList<>();
+public abstract class Table<P extends Player> {
+    protected  List<P> players = new ArrayList<>();
 
     /*
      * SubClases should be implemented setGame
@@ -16,16 +16,16 @@ public abstract class Table {
 
     /**************************************** */
     //Player Methods
-    public void addPlayer(Player newPlayer){
+    public void addPlayer(P newPlayer){
         players.add(newPlayer);
     }
 
-    public List<Player> getPlayers(){
+    public List<P> getPlayers(){
         return players;
     }
     
-    public Player getOnePlayer(int idPlayer){
-        for (Player player : players) {
+    public P getOnePlayer(int idPlayer){
+        for (P player : players) {
             if (player.matchesId(idPlayer)){
                 return player;
             }
@@ -34,7 +34,7 @@ public abstract class Table {
         return null;
     }
 
-    public Player deletePlayer(int idPlayer){
+    public P deletePlayer(int idPlayer){
         for (int i = 0; i < players.size(); i++) {
             if (players.get(i).matchesId(idPlayer)){
                 return players.remove(i);

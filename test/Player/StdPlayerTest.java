@@ -17,7 +17,7 @@ public class StdPlayerTest {
     @Test 
     void TestConstructor(){
         int handsize = 5;
-        StdPlayer player = new StdPlayer(handsize);
+        StdPlayer<StdCard> player = new StdPlayer<StdCard>(handsize);
 
 
         assertTrue(player.getPlayerHand().getMax() == handsize);
@@ -31,8 +31,8 @@ public class StdPlayerTest {
     }
     @Test 
     void TestSetAndGetPlayerHand(){
-        Hand hand = mock(Hand.class);
-        StdPlayer player = new StdPlayer(0);
+        Hand<StdCard> hand = mock(Hand.class);
+        StdPlayer<StdCard> player = new StdPlayer<StdCard>(0);
         player.setPlayerHand(hand);
 
         assertEquals(hand, player.getPlayerHand());
@@ -42,7 +42,7 @@ public class StdPlayerTest {
         int idCard = 1;
         StdCard card = new StdCard(idCard, 0, "Test");
 
-        StdPlayer player = new StdPlayer(1);
+        StdPlayer<StdCard> player = new StdPlayer<StdCard>(1);
         player.getPlayerHand().add(card);
         player.putCardinTable(idCard);
 
@@ -52,7 +52,7 @@ public class StdPlayerTest {
     }
     @Test
     void TestPutCardinTableWithEmptyHand(){
-        StdPlayer player = new StdPlayer(1);
+        StdPlayer<StdCard> player = new StdPlayer<StdCard>(1);
 
         player.putCardinTable(1);
 
@@ -64,7 +64,7 @@ public class StdPlayerTest {
         Card card1 = new StdCard(1, 0, "Test 2");
         Card card2 = new StdCard(2, 0, "Test 3");
 
-        StdPlayer player = new StdPlayer(3);
+        StdPlayer<Card> player = new StdPlayer<Card>(3);
         player.getPlayerHand().add(card0);
         player.getPlayerHand().add(card1);
         player.getPlayerHand().add(card2);
@@ -84,7 +84,7 @@ public class StdPlayerTest {
     }
     @Test
     void TestRemoveToTableWithoutId(){
-        StdPlayer player = new StdPlayer(0);
+        StdPlayer<Card> player = new StdPlayer<Card>(0);
 
         Card nullCard = player.removeToTable(2);
 

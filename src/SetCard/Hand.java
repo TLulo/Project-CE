@@ -6,7 +6,7 @@ import java.util.List;
 import Card.Card;
 
 
-public class Hand extends SetCard{
+public class Hand<C extends Card> extends SetCard<C>{
     private int handSize;
 
     public Hand(int handSize){
@@ -29,11 +29,11 @@ public class Hand extends SetCard{
         return handSize;
     }
     
-    public void setHand(List<Card> hand){
+    public void setHand(List<C> hand){
         setListCard(hand);
     }
     
-    public @Override void setListCard(List<Card> hand){
+    public @Override void setListCard(List<C> hand){
         if (hand.size() > handSize) {
             System.out.println("Warning (setHand): hand is too long");
             hand = new ArrayList<>(hand.subList(0, handSize));
@@ -43,7 +43,7 @@ public class Hand extends SetCard{
         cards = new ArrayList<>(hand);
     }
 
-    public void add(Card newCard){
+    public void add(C newCard){
         if (cards.size() < handSize){
             cards.addFirst(newCard);
         }else{

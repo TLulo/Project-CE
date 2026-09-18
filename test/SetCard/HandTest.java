@@ -15,7 +15,7 @@ public class HandTest {
     @Test 
     void TestConstructor(){
         int handsize = 5;
-        Hand hand = new Hand(handsize);
+        Hand<Card> hand = new Hand<Card>(handsize);
 
         assertEquals(5, hand.getMax());
         assertTrue(hand.getAllCards().isEmpty());
@@ -24,12 +24,12 @@ public class HandTest {
     void TestConstructorNegative(){
         int handsize = -5;
         
-        assertThrowsExactly(IllegalArgumentException.class, ()->new Hand(handsize));
+        assertThrowsExactly(IllegalArgumentException.class, ()->new Hand<Card>(handsize));
     }
     @Test 
     void TestSetnGetMax(){
         int handsize = 5;
-        Hand hand = new Hand(handsize);
+        Hand<Card> hand = new Hand<Card>(handsize);
 
         assertEquals(handsize, hand.getMax());
 
@@ -41,7 +41,7 @@ public class HandTest {
     @Test 
     void TestSetMaxNegative(){
         int handsize = 5;
-        Hand hand = new Hand(handsize);
+        Hand<Card> hand = new Hand<Card>(handsize);
         
         assertThrowsExactly(IllegalArgumentException.class, ()->hand.setMax(-5));
     }
@@ -56,7 +56,7 @@ public class HandTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Hand hand = new Hand(3);
+        Hand<Card> hand = new Hand<Card>(3);
 
         assertTrue(hand.getAllCards().isEmpty());
 
@@ -74,7 +74,7 @@ public class HandTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Hand hand = new Hand(999);
+        Hand<Card> hand = new Hand<Card>(999);
 
         assertTrue(hand.getAllCards().isEmpty());
 
@@ -84,7 +84,7 @@ public class HandTest {
     }
     @Test 
     void TestSetnGetListCardBigList(){
-        int handSize = 2;
+        int handsize = 2;
         Card card1 = new StdCard(1, 0, "test");
         Card card2 = new StdCard(2, 0, "test");
         Card card3 = new StdCard(3, 0, "test");
@@ -94,21 +94,21 @@ public class HandTest {
         listCards.add(card2);
         listCards.add(card3);
 
-        Hand hand = new Hand(handSize);
+        Hand<Card> hand = new Hand<Card>(handsize);
 
         assertTrue(hand.getAllCards().isEmpty());
 
         hand.setHand(listCards);
-        assertEquals(listCards.subList(0, handSize), hand.getAllCards());
+        assertEquals(listCards.subList(0, handsize), hand.getAllCards());
     }
     @Test 
     void Testadd(){
-        int handSize = 2;
+        int handsize = 2;
         Card card1 = new StdCard(1, 0, "test");
         Card card2 = new StdCard(2, 0, "test");
         Card card3 = new StdCard(3, 0, "test");
 
-        Hand hand = new Hand(handSize);
+        Hand<Card> hand = new Hand<Card>(handsize);
         assertTrue(hand.isEmpty());
         hand.add(card3);
 

@@ -3,16 +3,16 @@ package Engine;
 import Player.Player;
 import Table.Table;
 
-public class Engine {
-    protected Table table;
+public class Engine <T extends Table<P>, P extends Player>{
+    protected T table;
     protected int currentTurn;
 
-    public Engine(Table table){
+    public Engine(T table){
         this.table = table;
         currentTurn = 0;
     }
 
-    public Player getCurrentPlayer(){
+    public P getCurrentPlayer(){
         if (!table.getPlayers().isEmpty()){
             currentTurn = (currentTurn) % table.getPlayers().size();
             return table.getPlayers().get(currentTurn);
@@ -21,11 +21,11 @@ public class Engine {
         return null;
     }
 
-    public Table getTable(){
+    public T getTable(){
         return table;
     }
     
-    public Player nextTurn(){
+    public P nextTurn(){
         if (!table.getPlayers().isEmpty()){
             currentTurn = (currentTurn + 1) % table.getPlayers().size();
             return getCurrentPlayer();

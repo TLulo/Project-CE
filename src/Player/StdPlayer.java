@@ -6,36 +6,36 @@ import java.util.List;
 import Card.Card;
 import SetCard.Hand;
 
-public class StdPlayer extends Player {
-    protected Hand hand;
-    protected List<Card> playerTable;
+public class StdPlayer<C extends Card> extends Player{
+    protected Hand<C> hand;
+    protected List<C> playerTable;
 
     public StdPlayer(int handSize){
         super();
         playerTable = new ArrayList<>();
-        hand = new Hand(handSize);
+        hand = new Hand<C>(handSize);
     }
 
-    public void setPlayerHand(Hand newHand){
+    public void setPlayerHand(Hand<C> newHand){
         hand = newHand;
     }
 
-    public Hand getPlayerHand(){
+    public Hand<C> getPlayerHand(){
         return hand;
     }
 
-    public List<Card> getPlayerTable(){
+    public List<C> getPlayerTable(){
         return playerTable;
     }
 
     public void putCardinTable(int cardId){
-         Card card = hand.takeSearchCard(cardId);
+         C card = hand.takeSearchCard(cardId);
          if (card != null) {
              playerTable.add(card);
          }
     }
 
-    public Card removeToTable(int CardId){
+    public C removeToTable(int CardId){
         for (int i = 0; i < playerTable.size(); i++ ) {
             if (playerTable.get(i).matchesId(CardId)){
                 return playerTable.remove(i);
