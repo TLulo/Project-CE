@@ -3,7 +3,7 @@ package Engine;
 import Player.Player;
 import Table.Table;
 
-public class Engine <T extends Table<P>, P extends Player>{
+public class Engine <P extends Player, T extends Table<P>>{
     protected T table;
     protected int currentTurn;
 
