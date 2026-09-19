@@ -20,6 +20,8 @@ public abstract class Table<P extends Player, C extends Card> {
      * with necesary Decks and other stuffs 
      */
 
+    public abstract void setGame();
+
     /**************************************** */
     //Draw Deck Methods
     public void addLastDraw(C card){
@@ -38,7 +40,8 @@ public abstract class Table<P extends Player, C extends Card> {
         return drawDeck.takeCard();
     }
 
-    public abstract void DealAllCards();
+    public abstract void dealAllCards();
+
     //Player Methods
     public void addPlayer(P newPlayer){
         players.add(newPlayer);

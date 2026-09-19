@@ -3,12 +3,9 @@ package Table;
 import java.util.ArrayList;
 import java.util.List;
 
-import Card.Card;
 import Card.StdCard;
-import Player.Player;
 import Player.StdPlayer;
 import SetCard.Deck;
-import SetCard.Hand;
 
 public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
     private Deck<StdCard> discardDeck;
@@ -20,7 +17,7 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
         inBoard = new ArrayList<>();
     }
 
-    public @Override void DealAllCards(){
+    public @Override void dealAllCards(){
         for (StdPlayer<StdCard> player : players) {
             player.setPlayerHand(drawDeck.deal(player.getPlayerHand().getMax()));
         }
@@ -29,6 +26,12 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
     public void convertDiscarInDraw(){
         for (int i = 0; i < discardDeck.getAmount(); i++) {
             drawDeck.addBottom(discardDeck.takeCard());
+        }
+    }
+
+    public void convertDiscarInDraw(int amount){
+        for (int i = 0; i < amount; i++) {
+            drawDeck.addBottom(discardDeck.takeRandomCard());
         }
     }
 
@@ -48,8 +51,26 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
         inBoard.add(card);
     }
 
-    public void setGame(int handSize, Deck<StdCard> draw){
+    public void resetBoard(){
+        inBoard = new ArrayList<StdCard>();
+    }
 
+    public void boardToDiscard(){
+        for (StdCard card : inBoard) {
+            discardDeck.addBottom(card);
+        }
+        resetBoard();
+    }
+
+    public void boardToDrawDeck(){
+        for (StdCard card : inBoard) {
+            drawDeck.addBottom(card);
+        }
+        resetBoard();
+    }
+
+    public @Override void setGame(){
+        dealAllCards();
     }
     
 }
