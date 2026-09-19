@@ -17,6 +17,10 @@ public class Deck<C extends Card> extends SetCard<C>{
 
         return cards.removeFirst();
     }
+
+    public C takeRandomCard(){
+        return cards.remove(new Random().nextInt(0, getAmount()));
+    }
     
     public void shuffle(){
         Collections.shuffle(cards);
