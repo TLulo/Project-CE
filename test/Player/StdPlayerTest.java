@@ -1,17 +1,20 @@
 package test.Player;
 
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
 import Card.Card;
 import Card.StdCard;
 import Player.StdPlayer;
-import SetCard.Hand;
 
 public class StdPlayerTest {
     @Test 
@@ -31,11 +34,17 @@ public class StdPlayerTest {
     }
     @Test 
     void TestSetAndGetPlayerHand(){
-        Hand<StdCard> hand = mock(Hand.class);
-        StdPlayer<StdCard> player = new StdPlayer<StdCard>(0);
-        player.setPlayerHand(hand);
+        List<StdCard> hand = new ArrayList<StdCard>();
+        hand.add(new StdCard(1, 0, null));
+        hand.add(new StdCard(2, 0, null));
+        hand.add(new StdCard(3, 0, null));
+        StdPlayer<StdCard> player1 = new StdPlayer<StdCard>(2);
+        StdPlayer<StdCard> player2 = new StdPlayer<StdCard>(3);
+        player1.setPlayerHand(hand);
+        player2.setPlayerHand(hand);
 
-        assertEquals(hand, player.getPlayerHand());
+        assertNotEquals(hand, player1.getPlayerHand().getAllCards());
+        assertEquals(hand, player2.getPlayerHand().getAllCards());
     }
     @Test 
     void TestPutCardinTable(){
