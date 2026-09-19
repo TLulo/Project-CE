@@ -1,9 +1,11 @@
 package Engine;
 
+import Card.Card;
+import Card.StdCard;
 import Player.Player;
 import Table.Table;
 
-public class Engine <P extends Player, T extends Table<P>>{
+public class Engine <P extends Player,C extends Card, T extends Table<P,C>>{
     protected T table;
     protected int currentTurn;
 

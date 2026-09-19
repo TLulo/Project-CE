@@ -3,10 +3,17 @@ package Table;
 import java.util.ArrayList;
 import java.util.List;
 
+import Card.Card;
 import Player.Player;
+import SetCard.Deck;
 
-public abstract class Table<P extends Player> {
+public abstract class Table<P extends Player, C extends Card> {
     protected  List<P> players = new ArrayList<>();
+    protected Deck<C> drawDeck = new Deck<C>();
+
+    public Table(List<C> deck){
+        drawDeck.setListCard(deck);
+    }
 
     /*
      * SubClases should be implemented setGame
@@ -14,6 +21,24 @@ public abstract class Table<P extends Player> {
      */
 
     /**************************************** */
+    //Draw Deck Methods
+    public void addLastDraw(C card){
+        drawDeck.addBottom(card);
+    }
+
+    public void addNextDraw(C card){
+        drawDeck.addTop(card);
+    }
+
+    public void addDrawCard(C card){
+        drawDeck.addRandom(card);
+    }
+
+    public C drawCard(){
+        return drawDeck.takeCard();
+    }
+
+    public abstract void DealAllCards();
     //Player Methods
     public void addPlayer(P newPlayer){
         players.add(newPlayer);
