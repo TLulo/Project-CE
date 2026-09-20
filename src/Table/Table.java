@@ -24,6 +24,10 @@ public abstract class Table<P extends Player, C extends Card> {
 
     /**************************************** */
     //Draw Deck Methods
+    public Deck<C> getDrawDeck(){
+        return drawDeck;
+    }
+
     public void addLastDraw(C card){
         drawDeck.addBottom(card);
     }
