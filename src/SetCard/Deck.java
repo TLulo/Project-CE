@@ -19,6 +19,9 @@ public class Deck<C extends Card> extends SetCard<C>{
     }
 
     public C takeRandomCard(){
+        if (cards.isEmpty()){
+            return null;
+        }
         return cards.remove(new Random().nextInt(0, getAmount()));
     }
     
