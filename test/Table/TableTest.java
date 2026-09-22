@@ -2,6 +2,7 @@ package test.Table;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -26,6 +27,13 @@ public class TableTest {
         Table<StdPlayer<StdCard>,StdCard> table = new StdTable(deck);
 
         assertFalse(table.getDrawDeck().isEmpty());
+        assertTrue(table.getPlayers().isEmpty());
+    }
+    @Test
+    void ConstructorNullTest(){
+        Table<StdPlayer<StdCard>,StdCard> table = new StdTable(null);
+
+        assertTrue(table.getDrawDeck().isEmpty());
         assertTrue(table.getPlayers().isEmpty());
     }
     @Test 

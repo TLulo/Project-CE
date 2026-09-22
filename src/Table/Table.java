@@ -12,7 +12,9 @@ public abstract class Table<P extends Player, C extends Card> {
     protected Deck<C> drawDeck = new Deck<C>();
 
     public Table(List<C> deck){
-        drawDeck.setListCard(deck);
+        if(deck instanceof List<C>){
+            drawDeck.setListCard(deck);
+        }
     }
 
     /*
