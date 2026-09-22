@@ -17,6 +17,14 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
         inBoard = new ArrayList<>();
     }
 
+    public Deck<StdCard> getDiscardDeck(){
+        return discardDeck;
+    }
+
+    public List<StdCard> getBoard(){
+        return inBoard;
+    }
+
     public @Override void dealAllCards(){
         for (StdPlayer<StdCard> player : players) {
             player.setPlayerHand(drawDeck.deal(player.getPlayerHand().getMax()));
@@ -24,7 +32,8 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
     }
 
     public void convertDiscarInDraw(){
-        for (int i = 0; i < discardDeck.getAmount(); i++) {
+        int bound = discardDeck.getAmount();
+        for (int i = 0; i < bound; i++) {
             drawDeck.addBottom(discardDeck.takeCard());
         }
     }
