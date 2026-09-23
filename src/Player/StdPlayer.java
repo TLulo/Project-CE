@@ -1,31 +1,50 @@
 package Player;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Card.Card;
+import SetCard.Board;
 import SetCard.Hand;
 
 public class StdPlayer<C extends Card> extends Player{
     protected Hand<C> hand;
-    protected List<C> playerTable;
+    protected Board<C> playerTable;
 
     public StdPlayer(int handSize){
         super();
-        playerTable = new ArrayList<>();
+        playerTable = new Board<C>();
         hand = new Hand<C>(handSize);
     }
 
+    //HAND Methods
     public void setPlayerHand(List<C> newHand){
         hand.setHand(newHand);
     }
 
-    public Hand<C> getPlayerHand(){
-        return hand;
+    public void setHandCapacity(int max){
+        hand.setMax(max);
     }
 
+    public int getHandCapacity(){
+        return hand.getMax();
+    }
+
+    public List<C> getPlayerHand(){
+        return Collections.unmodifiableList(hand.getAllCards());
+    }
+
+    public int getHandAmount(){
+        return hand.getAmount();
+    }
+
+    public void addCardtoHand(C card){
+        hand.add(card);
+    }
+
+    //Table Methods
     public List<C> getPlayerTable(){
-        return playerTable;
+        return Collections.unmodifiableList(playerTable.getAllCards());
     }
 
     public void putCardinTable(int cardId){
@@ -36,12 +55,6 @@ public class StdPlayer<C extends Card> extends Player{
     }
 
     public C removeToTable(int cardId){
-        for (int i = 0; i < playerTable.size(); i++ ) {
-            if (playerTable.get(i).matchesId(cardId)){
-                return playerTable.remove(i);
-            }
-        }
-        System.out.println("Warning (removeToTable): id not in PlayerTable");
-        return null;
+        return playerTable.takeSearchCard(cardId);
     }
 }

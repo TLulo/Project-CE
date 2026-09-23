@@ -17,6 +17,7 @@ public class Hand<C extends Card> extends SetCard<C>{
         this.handSize = handSize;
     }
 
+    // Get and Setter
     public void setMax(int max){
         if (max < 0) {
             System.err.println("Invalid argument");
@@ -43,6 +44,7 @@ public class Hand<C extends Card> extends SetCard<C>{
         cards = new ArrayList<>(hand);
     }
 
+    //add methods
     public void add(C newCard){
         if (cards.size() < handSize){
             cards.addFirst(newCard);

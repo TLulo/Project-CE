@@ -1,20 +1,22 @@
 package Table;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import Card.StdCard;
 import Player.StdPlayer;
+import SetCard.Board;
 import SetCard.Deck;
 
 public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
     private Deck<StdCard> discardDeck;
-    private List<StdCard> inBoard;
+    private Board<StdCard> inBoard;
     
     public StdTable(List<StdCard> deck){
         super(deck);
         discardDeck = new Deck<StdCard>();
-        inBoard = new ArrayList<>();
+        inBoard = new Board<StdCard>();
     }
 
     public Deck<StdCard> getDiscardDeck(){
@@ -22,12 +24,12 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
     }
 
     public List<StdCard> getBoard(){
-        return inBoard;
+        return Collections.unmodifiableList(inBoard.getAllCards());
     }
 
     public @Override void dealAllCards(){
         for (StdPlayer<StdCard> player : players) {
-            player.setPlayerHand(drawDeck.deal(player.getPlayerHand().getMax()));
+            player.setPlayerHand(drawDeck.deal(player.getHandCapacity()));
         }
     }
 
@@ -61,18 +63,18 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
     }
 
     public void resetBoard(){
-        inBoard = new ArrayList<StdCard>();
+        inBoard = new Board<StdCard>();
     }
 
     public void boardToDiscard(){
-        for (StdCard card : inBoard) {
+        for (StdCard card : getBoard()) {
             discardDeck.addBottom(card);
         }
         resetBoard();
     }
 
     public void boardToDrawDeck(){
-        for (StdCard card : inBoard) {
+        for (StdCard card : getBoard()) {
             drawDeck.addBottom(card);
         }
         resetBoard();

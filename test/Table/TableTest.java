@@ -11,9 +11,7 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 import Card.StdCard;
-import Player.Player;
 import Player.StdPlayer;
-import SetCard.Deck;
 import Table.Table;
 import Table.StdTable;
 
@@ -118,5 +116,21 @@ public class TableTest {
         assertEquals(null, table.deletePlayer(player2.getId() + magicNumber));
         assertEquals(null, table.deletePlayer(player1.getId()+ magicNumber));
         assertEquals(2, table.getPlayers().size());
+    }
+    @Test
+    void EmptynPlayersNumberTest(){
+        StdPlayer<StdCard> player1 = new StdPlayer<StdCard>(0);
+        StdPlayer<StdCard> player2 = new StdPlayer<StdCard>(0);
+
+        Table<StdPlayer<StdCard>,StdCard> table = new StdTable(new ArrayList<>());
+        
+        assertTrue(table.playersIsEmpty());
+
+        table.addPlayer(player1);
+        assertEquals(1, table.playersNumber());
+        table.addPlayer(player2);
+        assertEquals(2, table.playersNumber());
+
+        assertFalse(table.playersIsEmpty());
     }
 }

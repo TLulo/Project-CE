@@ -40,26 +40,6 @@ public class DeckTest {
         assertEquals(null, deck.takeCard());
     }
     @Test 
-    void TestShuffle(){
-        Card card1 = new StdCard(1, 0, "test");
-        Card card2 = new StdCard(2, 0, "test");
-
-        List<Card> listCards = new ArrayList<>();
-        listCards.add(card1);
-        listCards.add(card2);
-
-        Deck<Card> deck = new Deck<Card>();
-        deck.setListCard(listCards);
-
-        deck.shuffle();
-
-        assertEquals(2, deck.getAmount());
-        assertNull(deck.peekSearchCard(0));
-        assertEquals(card1, deck.peekSearchCard(1));
-        assertEquals(card2, deck.peekSearchCard(2));
-        assertNull(deck.peekSearchCard(3));
-    }
-    @Test 
     void TestDeal(){
         Card card1 = new StdCard(1, 0, "test");
         Card card2 = new StdCard(2, 0, "test");
@@ -157,12 +137,12 @@ public class DeckTest {
 
         Deck<Card> deck = new Deck<Card>();
 
-        deck.addRandom(card1);
+        deck.add(card1);
         assertEquals(1, deck.getAmount());
         assertEquals(card1, deck.peekSearchCard(1));
 
-        deck.addRandom(card2);
-        deck.addRandom(card3);
+        deck.add(card2);
+        deck.add(card3);
 
         assertEquals(3, deck.getAmount());
         assertEquals(card1, deck.peekSearchCard(1));

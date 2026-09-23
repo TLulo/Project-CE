@@ -3,12 +3,12 @@ package SetCard;
 import java.util.List;
 import java.util.Random;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import Card.Card;
 
 public class Deck<C extends Card> extends SetCard<C>{
 
+    //Take Cards methods
     public C takeCard(){
         if (cards.isEmpty()){
             System.out.println("Warning (takeCard): Deck is empty");
@@ -23,10 +23,6 @@ public class Deck<C extends Card> extends SetCard<C>{
             return null;
         }
         return cards.remove(new Random().nextInt(0, getAmount()));
-    }
-    
-    public void shuffle(){
-        Collections.shuffle(cards);
     }
 
     public List<C> deal(int dealSize){
@@ -45,6 +41,8 @@ public class Deck<C extends Card> extends SetCard<C>{
         return hand;
     }
 
+
+    //Add Cards Methods
     public void addTop(C newCard){
         cards.addFirst(newCard);
     }
@@ -53,7 +51,7 @@ public class Deck<C extends Card> extends SetCard<C>{
         cards.addLast(newCard);
     }
 
-    public void addRandom(C newCard){
+    public void add(C newCard){
         if(cards.isEmpty()){
             cards.add(newCard);
         }else{

@@ -3,21 +3,35 @@ package SetCard;
 import Card.Card;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class SetCard <C extends Card>{
     protected List<C> cards = new ArrayList<>();
 
-    public int getAmount(){
-        return cards.size();
-    }
+    //GET and SET
     public void setListCard(List<C> cards){
         this.cards = new ArrayList<>(cards);
     }
+
     public List<C> getAllCards(){
         return cards;
     }
 
+    // Utils
+    public int getAmount(){
+        return cards.size();
+    }
+
+    public boolean isEmpty(){
+        return cards.isEmpty();
+    }
+
+    public void shuffle(){
+        Collections.shuffle(cards);
+    }
+
+    // Take and peek Cards
     public C peekSearchCard(int id){
         for (C card:cards){
             if (card.matchesId(id)){
@@ -34,8 +48,7 @@ public abstract class SetCard <C extends Card>{
         return card;
     }
 
-    public boolean isEmpty(){
-        return cards.isEmpty();
-    }
+    //Add Methods
+    public abstract void add(C card);
     
 }

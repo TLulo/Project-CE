@@ -1,7 +1,6 @@
 package Engine;
 
 import Card.Card;
-import Card.StdCard;
 import Player.Player;
 import Table.Table;
 
@@ -15,8 +14,8 @@ public class Engine <P extends Player,C extends Card, T extends Table<P,C>>{
     }
 
     public P getCurrentPlayer(){
-        if (!table.getPlayers().isEmpty()){
-            currentTurn = (currentTurn) % table.getPlayers().size();
+        if (!table.playersIsEmpty()){
+            currentTurn = (currentTurn) % table.playersNumber();
             return table.getPlayers().get(currentTurn);
         }
         System.out.println("Warning (getCurrentPlayer): no players at Table");
@@ -28,8 +27,8 @@ public class Engine <P extends Player,C extends Card, T extends Table<P,C>>{
     }
     
     public P nextTurn(){
-        if (!table.getPlayers().isEmpty()){
-            currentTurn = (currentTurn + 1) % table.getPlayers().size();
+        if (!table.playersIsEmpty()){
+            currentTurn = (currentTurn + 1) % table.playersNumber();
             return getCurrentPlayer();
         }
         System.out.println("Warning (nextTurn): no players at Table");
