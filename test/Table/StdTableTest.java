@@ -42,7 +42,7 @@ public class StdTableTest {
         assertEquals(1, table.getDrawDeck().getAmount());
 
         for (StdPlayer<StdCard> player : table.getPlayers()) {
-            assertEquals(2, player.getPlayerHand().getAmount());
+            assertEquals(2, player.getHandAmount());
         }
     }
     @Test 

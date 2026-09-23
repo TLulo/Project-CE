@@ -23,7 +23,7 @@ public class StdPlayerTest {
         StdPlayer<StdCard> player = new StdPlayer<StdCard>(handsize);
 
 
-        assertTrue(player.getPlayerHand().getMax() == handsize);
+        assertTrue(player.getHandCapacity() == handsize);
         assertTrue(player.getPlayerHand().isEmpty());
 
         assertTrue(player.getId() >= 0);
@@ -43,8 +43,8 @@ public class StdPlayerTest {
         player1.setPlayerHand(hand);
         player2.setPlayerHand(hand);
 
-        assertNotEquals(hand, player1.getPlayerHand().getAllCards());
-        assertEquals(hand, player2.getPlayerHand().getAllCards());
+        assertNotEquals(hand, player1.getPlayerHand());
+        assertEquals(hand, player2.getPlayerHand());
     }
     @Test 
     void TestPutCardinTable(){
@@ -52,7 +52,7 @@ public class StdPlayerTest {
         StdCard card = new StdCard(idCard, 0, "Test");
 
         StdPlayer<StdCard> player = new StdPlayer<StdCard>(1);
-        player.getPlayerHand().add(card);
+        player.addCardtoHand(card);
         player.putCardinTable(idCard);
 
         assertTrue(player.getPlayerHand().isEmpty());
@@ -74,9 +74,10 @@ public class StdPlayerTest {
         Card card2 = new StdCard(2, 0, "Test 3");
 
         StdPlayer<Card> player = new StdPlayer<Card>(3);
-        player.getPlayerHand().add(card0);
-        player.getPlayerHand().add(card1);
-        player.getPlayerHand().add(card2);
+        
+        player.addCardtoHand(card0);
+        player.addCardtoHand(card1);
+        player.addCardtoHand(card2);
 
         player.putCardinTable(0);
         player.putCardinTable(1);

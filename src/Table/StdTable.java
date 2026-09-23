@@ -27,7 +27,7 @@ public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
 
     public @Override void dealAllCards(){
         for (StdPlayer<StdCard> player : players) {
-            player.setPlayerHand(drawDeck.deal(player.getPlayerHand().getMax()));
+            player.setPlayerHand(drawDeck.deal(player.getHandCapacity()));
         }
     }
 
