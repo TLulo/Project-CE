@@ -165,4 +165,24 @@ public class SetCardTest {
         deck.takeSearchCard(1);
         assertNotEquals(listCards, deck.getAllCards());
     }
+    @Test
+    void TestShuffle(){
+        Card card1 = new StdCard(1, 0, "test");
+        Card card2 = new StdCard(2, 0, "test");
+
+        List<Card> listCards = new ArrayList<>();
+        listCards.add(card1);
+        listCards.add(card2);
+
+        Deck<Card> deck = new Deck<Card>();
+        deck.setListCard(listCards);
+
+        deck.shuffle();
+
+        assertEquals(2, deck.getAmount());
+        assertNull(deck.peekSearchCard(0));
+        assertEquals(card1, deck.peekSearchCard(1));
+        assertEquals(card2, deck.peekSearchCard(2));
+        assertNull(deck.peekSearchCard(3));
+    }
 }
