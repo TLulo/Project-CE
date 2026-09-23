@@ -1,6 +1,7 @@
 package SetCard;
 
 import java.util.List;
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -15,6 +16,13 @@ public class Deck<C extends Card> extends SetCard<C>{
         }
 
         return cards.removeFirst();
+    }
+
+    public C takeRandomCard(){
+        if (cards.isEmpty()){
+            return null;
+        }
+        return cards.remove(new Random().nextInt(0, getAmount()));
     }
     
     public void shuffle(){
@@ -43,5 +51,13 @@ public class Deck<C extends Card> extends SetCard<C>{
 
     public void addBottom(C newCard){
         cards.addLast(newCard);
+    }
+
+    public void addRandom(C newCard){
+        if(cards.isEmpty()){
+            cards.add(newCard);
+        }else{
+            cards.add(new Random().nextInt(0, getAmount()), newCard);
+        }
     }
 }

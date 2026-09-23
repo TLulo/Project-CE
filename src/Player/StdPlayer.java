@@ -16,8 +16,8 @@ public class StdPlayer<C extends Card> extends Player{
         hand = new Hand<C>(handSize);
     }
 
-    public void setPlayerHand(Hand<C> newHand){
-        hand = newHand;
+    public void setPlayerHand(List<C> newHand){
+        hand.setHand(newHand);
     }
 
     public Hand<C> getPlayerHand(){
