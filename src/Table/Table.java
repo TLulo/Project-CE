@@ -49,6 +49,14 @@ public abstract class Table<P extends Player, C extends Card> {
     public abstract void dealAllCards();
 
     //Player Methods
+    public boolean playersIsEmpty(){
+        return players.isEmpty();
+    }
+
+    public int playersNumber(){
+        return players.size();
+    }
+
     public void addPlayer(P newPlayer){
         players.add(newPlayer);
     }

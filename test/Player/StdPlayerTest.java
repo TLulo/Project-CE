@@ -99,4 +99,13 @@ public class StdPlayerTest {
 
         assertNull(nullCard);
     }
+    @Test
+    void setnGetMax(){
+        StdPlayer<Card> player = new StdPlayer<Card>(0);
+
+        assertEquals(0, player.getHandCapacity());
+        player.setHandCapacity(5);
+
+        assertEquals(5, player.getHandCapacity());
+    }
 }

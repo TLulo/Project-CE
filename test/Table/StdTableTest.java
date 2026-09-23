@@ -46,6 +46,31 @@ public class StdTableTest {
         }
     }
     @Test 
+    void setGameTest(){
+        int handSize = 2;
+
+        StdTable table = new StdTable(null);
+
+        table.addPlayer(new StdPlayer<StdCard>(handSize));
+        table.addPlayer(new StdPlayer<StdCard>(handSize));
+
+        table.addDrawCard(new StdCard(1, 0, null));
+        table.addDrawCard(new StdCard(2, 0, null));
+        table.addDrawCard(new StdCard(3, 0, null));
+        table.addDrawCard(new StdCard(4, 0, null));
+        table.addDrawCard(new StdCard(5, 0, null));
+
+        assertEquals(5, table.getDrawDeck().getAmount());
+
+        table.setGame();
+
+        assertEquals(1, table.getDrawDeck().getAmount());
+
+        for (StdPlayer<StdCard> player : table.getPlayers()) {
+            assertEquals(2, player.getHandAmount());
+        }
+    }
+    @Test 
     void discardnTakeDiscardTest(){
         StdCard card1 = new StdCard(3, 0, null);
         StdCard card2 = new StdCard(4, 0, null);
