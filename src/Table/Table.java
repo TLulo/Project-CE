@@ -39,7 +39,7 @@ public abstract class Table<P extends Player, C extends Card> {
     }
 
     public void addDrawCard(C card){
-        drawDeck.addRandom(card);
+        drawDeck.add(card);
     }
 
     public C drawCard(){

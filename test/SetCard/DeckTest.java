@@ -157,12 +157,12 @@ public class DeckTest {
 
         Deck<Card> deck = new Deck<Card>();
 
-        deck.addRandom(card1);
+        deck.add(card1);
         assertEquals(1, deck.getAmount());
         assertEquals(card1, deck.peekSearchCard(1));
 
-        deck.addRandom(card2);
-        deck.addRandom(card3);
+        deck.add(card2);
+        deck.add(card3);
 
         assertEquals(3, deck.getAmount());
         assertEquals(card1, deck.peekSearchCard(1));

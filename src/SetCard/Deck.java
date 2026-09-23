@@ -53,7 +53,7 @@ public class Deck<C extends Card> extends SetCard<C>{
         cards.addLast(newCard);
     }
 
-    public void addRandom(C newCard){
+    public void add(C newCard){
         if(cards.isEmpty()){
             cards.add(newCard);
         }else{

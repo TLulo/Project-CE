@@ -37,5 +37,7 @@ public abstract class SetCard <C extends Card>{
     public boolean isEmpty(){
         return cards.isEmpty();
     }
+
+    public abstract void add(C card);
     
 }

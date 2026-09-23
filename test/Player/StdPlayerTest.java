@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +73,7 @@ public class StdPlayerTest {
         Card card2 = new StdCard(2, 0, "Test 3");
 
         StdPlayer<Card> player = new StdPlayer<Card>(3);
-        
+
         player.addCardtoHand(card0);
         player.addCardtoHand(card1);
         player.addCardtoHand(card2);
