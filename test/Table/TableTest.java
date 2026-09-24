@@ -10,10 +10,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Card.StdCard;
-import Player.StdPlayer;
-import Table.Table;
-import Table.StdTable;
+import Engine.Card.StdCard;
+import Engine.Player.StdPlayer;
+import Engine.Table.StdTable;
+import Engine.Table.Table;
 
 public class TableTest {
     @Test

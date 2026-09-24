@@ -1,13 +1,13 @@
-package Table;
+package Engine.Table;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import Card.StdCard;
-import Player.StdPlayer;
-import SetCard.Board;
-import SetCard.Deck;
+import Engine.Card.StdCard;
+import Engine.Player.StdPlayer;
+import Engine.SetCard.Board;
+import Engine.SetCard.Deck;
 
 public class StdTable extends Table<StdPlayer<StdCard>, StdCard>{
     private Deck<StdCard> discardDeck;

@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Card.Card;
-import Card.StdCard;
-import SetCard.Hand;
+import Engine.Card.Card;
+import Engine.Card.StdCard;
+import Engine.SetCard.Hand;
 
 public class HandTest {
     @Test 

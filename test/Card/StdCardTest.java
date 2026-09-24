@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import Card.StdCard;
+import Engine.Card.StdCard;
 
 public class StdCardTest {
     @Test 

@@ -1,4 +1,4 @@
-package Card;
+package Engine.Card;
 
 public abstract class Card {
     protected int id;

@@ -26,10 +26,13 @@ opencov:
 
 #Clean
 clean:
-	rm -rf out/ jacoco.exec coverage/
+	rm -rf out/ jacoco.exec coverage/	
 #Compila
 compile: clean
-	javac -cp "lib/*:out" -d out/src $(SOURCES)
+	javac --module-path /lib/javafx-sdk-27/lib   --add-modules javafx.controls -cp "lib/*:out" -d out/src $(SOURCES)
+
+run: compile
+	java --module-path /lib/javafx-sdk-27/lib   --add-modules javafx.controls   -cp out/src UI.Main
 
 #Compila los test
 test: compile
@@ -43,7 +46,7 @@ coverage: compile
 		-cp "lib/*:out/src:out/test" \
 		org.junit.platform.console.ConsoleLauncher execute --scan-class-path
 	java -jar $(JACOCO)/jacococli.jar report $(EXEC) \
-		--classfiles out/src \
+		--classfiles out/src/Engine \
 		--sourcefiles src \
 		--html $(COVERAGE)
 	xdg-open $(COVERAGE)/index.html

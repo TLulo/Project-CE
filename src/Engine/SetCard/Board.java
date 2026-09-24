@@ -1,6 +1,6 @@
-package SetCard;
+package Engine.SetCard;
 
-import Card.Card;
+import Engine.Card.Card;
 
 public class Board<C extends Card> extends SetCard<C>{
     //ADD Cards Methods

@@ -1,8 +1,8 @@
-package Engine;
+package Engine.Engine;
 
-import Card.Card;
-import Player.Player;
-import Table.Table;
+import Engine.Card.Card;
+import Engine.Player.Player;
+import Engine.Table.Table;
 
 public class Engine <P extends Player,C extends Card, T extends Table<P,C>>{
     protected T table;

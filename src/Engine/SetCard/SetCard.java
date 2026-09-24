@@ -1,10 +1,10 @@
-package SetCard;
-
-import Card.Card;
+package Engine.SetCard;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import Engine.Card.Card;
 
 public abstract class SetCard <C extends Card>{
     protected List<C> cards = new ArrayList<>();

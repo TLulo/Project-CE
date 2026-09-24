@@ -1,11 +1,11 @@
-package Player;
+package Engine.Player;
 
 import java.util.Collections;
 import java.util.List;
 
-import Card.Card;
-import SetCard.Board;
-import SetCard.Hand;
+import Engine.Card.Card;
+import Engine.SetCard.Board;
+import Engine.SetCard.Hand;
 
 public class StdPlayer<C extends Card> extends Player{
     protected Hand<C> hand;

@@ -9,10 +9,10 @@ import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
 
-import Card.StdCard;
-import Engine.Engine;
-import Player.StdPlayer;
-import Table.StdTable;
+import Engine.Card.StdCard;
+import Engine.Engine.Engine;
+import Engine.Player.StdPlayer;
+import Engine.Table.StdTable;
 
 public class EngineTest {
     @Test

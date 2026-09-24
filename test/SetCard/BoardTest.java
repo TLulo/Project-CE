@@ -3,9 +3,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import Card.Card;
-import Card.StdCard;
-import SetCard.Board;
+import Engine.Card.Card;
+import Engine.Card.StdCard;
+import Engine.SetCard.Board;
 
 public class BoardTest {
     @Test 

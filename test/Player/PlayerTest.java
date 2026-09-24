@@ -7,10 +7,10 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import Player.Player;
-import Player.StdPlayer;
-import Card.StdCard;
-import Card.Card;
+import Engine.Card.Card;
+import Engine.Card.StdCard;
+import Engine.Player.Player;
+import Engine.Player.StdPlayer;
 
 public class PlayerTest {
     @Test 

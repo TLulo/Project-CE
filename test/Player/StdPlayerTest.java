@@ -11,9 +11,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Card.Card;
-import Card.StdCard;
-import Player.StdPlayer;
+import Engine.Card.Card;
+import Engine.Card.StdCard;
+import Engine.Player.StdPlayer;
 
 public class StdPlayerTest {
     @Test 
