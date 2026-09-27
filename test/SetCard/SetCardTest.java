@@ -10,9 +10,9 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import Card.Card;
-import Card.StdCard;
-import SetCard.Deck;
+import Engine.Card.Card;
+import Engine.Card.StdCard;
+import Engine.SetCard.Deck;
 
 public class SetCardTest {
     @Test 

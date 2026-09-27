@@ -1,11 +1,11 @@
-package Table;
+package Engine.Table;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Card.Card;
-import Player.Player;
-import SetCard.Deck;
+import Engine.Card.Card;
+import Engine.Player.Player;
+import Engine.SetCard.Deck;
 
 public abstract class Table<P extends Player, C extends Card> {
     protected  List<P> players = new ArrayList<>();

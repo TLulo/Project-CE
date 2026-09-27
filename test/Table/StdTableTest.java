@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import Card.StdCard;
-import Player.StdPlayer;
-import Table.StdTable;
+import Engine.Card.StdCard;
+import Engine.Player.StdPlayer;
+import Engine.Table.StdTable;
 
 public class StdTableTest {
     @Test 

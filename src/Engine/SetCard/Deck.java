@@ -1,10 +1,11 @@
-package SetCard;
+package Engine.SetCard;
 
 import java.util.List;
 import java.util.Random;
-import java.util.ArrayList;
 
-import Card.Card;
+import Engine.Card.Card;
+
+import java.util.ArrayList;
 
 public class Deck<C extends Card> extends SetCard<C>{
 

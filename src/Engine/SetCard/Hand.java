@@ -1,9 +1,9 @@
-package SetCard;
+package Engine.SetCard;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import Card.Card;
+import Engine.Card.Card;
 
 
 public class Hand<C extends Card> extends SetCard<C>{

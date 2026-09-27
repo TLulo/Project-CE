@@ -6,8 +6,8 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import Card.StdCard;
-import Card.Card;
+import Engine.Card.Card;
+import Engine.Card.StdCard;
 
 public class CardTest {
     @Test 
