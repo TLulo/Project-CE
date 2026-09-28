@@ -19,13 +19,12 @@ public class CardUI<C extends Card> extends StackPane {
     private final Label cardId;
     private final Rectangle base;
     private ImageView cardimage = null;
-    private final int width = 100;
-    private final int height = 140;
+    private final int width = 128;//1280*0.1
 
-    public CardUI(C card){
-        setPrefSize(width, height);
-        setMaxSize(width, height);
-        base = new Rectangle(width, height);
+    public CardUI(C card, boolean visible){
+        setPrefSize(width, width*1.4);
+        setMaxSize(width, width*1.4);
+        base = new Rectangle(width, width*1.4);
         base.setFill(Color.LIGHTBLUE);
 
         cardId = new Label(String.valueOf(card.getId()));
@@ -34,19 +33,26 @@ public class CardUI<C extends Card> extends StackPane {
         base.setArcHeight(15);
         base.setArcWidth(15);
 
-        setImageById(card.getId());
+        if (visible) {
+            String path = IMAGE_FOLDER + card.getId() + ".png";
+            cardId.setVisible(true);
+            setImage(path);
+        }else{
+            String path = IMAGE_FOLDER + "back.png";
+            cardId.setVisible(false);
+            setImage(path);
+        }
         
         getChildren().addAll(base, cardimage,cardId);
     }
 
-    private void setImageById(int id){
-        String path = IMAGE_FOLDER + id + ".png";
+    private void setImage(String path){
         cardimage = new ImageView();
         try {
             Image img = new Image(new FileInputStream(path));
             cardimage.setImage(img);
             cardimage.setFitWidth(width);
-            cardimage.setFitHeight(height);
+            cardimage.setFitHeight(width*1.4);
             cardimage.setVisible(true);
             base.setVisible(false);
             cardId.setVisible(false);
@@ -55,7 +61,6 @@ public class CardUI<C extends Card> extends StackPane {
             cardimage.setImage(null);
             cardimage.setVisible(false);
             base.setVisible(true);
-            cardId.setVisible(true);
         }
     }
 }
