@@ -2,7 +2,7 @@ package UI;
 import Engine.Card.StdCard;
 import Engine.SetCard.Hand;
 import UI.Card.CardUI;
-import UI.Hand.HandUI;
+import UI.SetCard.HandUI;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

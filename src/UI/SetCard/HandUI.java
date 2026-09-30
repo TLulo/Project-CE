@@ -1,4 +1,4 @@
-package UI.Hand;
+package UI.SetCard;
 
 import Engine.Card.Card;
 import Engine.SetCard.Hand;
