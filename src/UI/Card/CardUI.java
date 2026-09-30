@@ -27,7 +27,11 @@ public class CardUI<C extends Card> extends StackPane {
         base = new Rectangle(width, width*1.4);
         base.setFill(Color.LIGHTBLUE);
 
-        cardId = new Label(String.valueOf(card.getId()));
+        if (card instanceof C) {
+            cardId = new Label(String.valueOf(card.getId()));
+        }else{
+            cardId = new Label("-1");
+        }
         setAlignment(cardId,Pos.TOP_LEFT);
 
         base.setArcHeight(15);
