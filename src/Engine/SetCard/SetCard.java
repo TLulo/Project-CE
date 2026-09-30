@@ -32,6 +32,14 @@ public abstract class SetCard <C extends Card>{
     }
 
     // Take and peek Cards
+    public C peekLastCard(){
+        return cards.getLast();
+    }
+
+    public C peekFirstCard(){
+        return cards.getFirst();
+    }
+
     public C peekSearchCard(int id){
         for (C card:cards){
             if (card.matchesId(id)){

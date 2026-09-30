@@ -19,6 +19,15 @@ public class Deck<C extends Card> extends SetCard<C>{
         return cards.removeFirst();
     }
 
+    public C takeLastCard(){
+        if (cards.isEmpty()){
+            System.out.println("Warning (takeCard): Deck is empty");
+            return null;
+        }
+
+        return cards.removeLast();
+    }
+
     public C takeRandomCard(){
         if (cards.isEmpty()){
             return null;
