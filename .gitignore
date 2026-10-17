@@ -23,6 +23,9 @@
 coverage/
 jacoco.exec
 
+#libs
+lib/
+
 # vscode configs
 .vscode/
 

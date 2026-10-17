@@ -5,9 +5,10 @@ TEST_DIR=test
 #Buscar todos lo archivos .java
 SOURCES=$(shell find $(SRC_DIR) -name "*.java")
 TEST_SOURCES = $(shell find $(TEST_DIR) -name "*.java")
-JACOCO = /home/lalo/Descargas/jacoco-0.8.15/lib
+JACOCO = ./lib/jacoco-0.8.15/lib
 EXEC = jacoco.exec
 COVERAGE = ./coverage
+MAIN = UI.Main
 
 .PHONY: all clean
 
@@ -29,10 +30,10 @@ clean:
 	rm -rf out/ jacoco.exec coverage/	
 #Compila
 compile: clean
-	javac --module-path /lib/javafx-sdk-27/lib   --add-modules javafx.controls -cp "lib/*:out" -d out/src $(SOURCES)
+	javac --module-path ./lib/javafx-25_linux-x64_bin-sdk/javafx-sdk-25.0.4/lib   --add-modules javafx.controls -cp "lib/*:out" -d out/src $(SOURCES)
 
 run: compile
-	java --module-path /lib/javafx-sdk-27/lib   --add-modules javafx.controls   -cp out/src UI.Main
+	java --module-path ./lib/javafx-25_linux-x64_bin-sdk/javafx-sdk-25.0.4/lib   --add-modules javafx.controls   -cp out/src $(MAIN)
 
 #Compila los test
 test: compile
