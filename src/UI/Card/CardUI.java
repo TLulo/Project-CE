@@ -1,7 +1,10 @@
 package UI.Card;
 
 import java.io.FileInputStream;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import Engine.Card.Card;
@@ -16,13 +19,18 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
 public class CardUI<C extends Card> extends StackPane {
-    private static final String IMAGE_FOLDER = "images/cards/";
+    private static final String DEFAULT_IMAGE_FOLDER = "images/cards/";
+    private static String imageFolder = DEFAULT_IMAGE_FOLDER;
+
     private static final Map<String, Image> imageCache = new HashMap<>();
+    // Referencias débiles para no impedir que se liberen cartas que ya no se usan
+    private static final List<WeakReference<CardUI<?>>> instances = new ArrayList<>();
 
     public static final double DEFAULT_WIDTH = 110;
     private static final double RATIO = 1.4;
 
     private final C card;
+    private final boolean faceUp;
     private final double width;
     private final double height;
 
@@ -32,6 +40,7 @@ public class CardUI<C extends Card> extends StackPane {
 
     public CardUI(C card, boolean faceUp, double width) {
         this.card = card;
+        this.faceUp = faceUp;
         this.width = width;
         this.height = width * RATIO;
 
@@ -40,17 +49,44 @@ public class CardUI<C extends Card> extends StackPane {
         setMaxSize(width, height);
         setAlignment(Pos.CENTER);
 
-        String path = IMAGE_FOLDER + (faceUp ? card.getId() + ".png" : "back.png");
+        refreshImage();
+        instances.add(new WeakReference<>(this));
+    }
+
+    public C getCard() {
+        return card;
+    }
+
+    public static String getImageFolder() {
+        return imageFolder;
+    }
+
+    /** Cambia el directorio de imágenes y actualiza todas las cartas existentes. */
+    public static void setImageFolder(String folder) {
+        if (folder == null || folder.isBlank()) {
+            return;
+        }
+        imageFolder = folder.endsWith("/") || folder.endsWith("\\") ? folder : folder + "/";
+
+        instances.removeIf(r -> r.get() == null);
+        for (WeakReference<CardUI<?>> r : instances) {
+            CardUI<?> c = r.get();
+            if (c != null) {
+                c.refreshImage();
+            }
+        }
+    }
+
+    public void refreshImage() {
+        String path = imageFolder + (faceUp ? card.getId() + ".png" : "back.png");
         Image img = loadImage(path);
+
+        getChildren().clear();
         if (img != null) {
             getChildren().add(buildImageView(img));
         } else {
             getChildren().add(buildFallback(faceUp));
         }
-    }
-
-    public C getCard() {
-        return card;
     }
 
     public void setSelected(boolean selected) {
