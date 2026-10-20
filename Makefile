@@ -8,7 +8,8 @@ TEST_SOURCES = $(shell find $(TEST_DIR) -name "*.java")
 JACOCO = ./lib/jacoco-0.8.15/lib
 EXEC = jacoco.exec
 COVERAGE = ./coverage
-MAIN = UI.Main
+# MAIN = UI.Main
+MAIN = blackjack.Main
 
 .PHONY: all clean
 
